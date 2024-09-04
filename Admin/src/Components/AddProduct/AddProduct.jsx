@@ -24,7 +24,7 @@ const AddProduct = () => {
     let formData = new FormData();
     formData.append("product", image);
     // console.log("Hetvi");
-    await fetch("https://shopping-r6vv.onrender.com/upload", {
+    await fetch("http://localhost:4000/upload", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -39,7 +39,7 @@ const AddProduct = () => {
     if (responseData.success) {
       product.image = responseData.image_url; //image_url get from upload endpoint
       console.log(product);
-      await fetch("https://shopping-r6vv.onrender.com/addproduct", {
+      await fetch("http://localhost:4000/addproduct", {
         method: "POST",
         headers: {
           Accept: "application/json",
