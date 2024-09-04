@@ -13,12 +13,12 @@ const ShopContextProvider = (props) => {
   const [all_product, setAll_product] = useState([]);
   const [cartItems, setCartItems] = useState({});
   useEffect(() => {
-    fetch("http://localhost:4000/allproducts")
+    fetch("https://shopping-20ht.onrender.com/allproducts")
       .then((response) => response.json())
       .then((data) => setAll_product(data));
 
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:4000/getcart", {
+      fetch("https://shopping-20ht.onrender.com/getcart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -45,7 +45,7 @@ const ShopContextProvider = (props) => {
 
     if (localStorage.getItem("auth-token")) {
       //when we are logged in that case we will update this itemid in the mongodb in user we have cartData and in that object we have 300 id and if i add any item in id in our cart that we will send to mongodb database and will store it in the users cartData
-      fetch("http://localhost:4000/addtocart", {
+      fetch("https://shopping-20ht.onrender.com/addtocart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
@@ -61,7 +61,7 @@ const ShopContextProvider = (props) => {
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem("auth-token")) {
-      fetch("http://localhost:4000/removefromcart", {
+      fetch("https://shopping-20ht.onrender.com/removefromcart", {
         method: "POST",
         headers: {
           Accept: "application/form-data",
