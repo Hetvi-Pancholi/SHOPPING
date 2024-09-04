@@ -6,7 +6,7 @@ const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
   const fetchInfo = async () => {
     //resp.json( ) is used to parse the data
-    await fetch("http://localhost:4000/allproducts")
+    await fetch("https://shopping-r6vv.onrender.com/allproducts")
       .then((resp) => resp.json())
       .then((data) => {
         setAllProducts(data);
@@ -18,7 +18,7 @@ const ListProduct = () => {
   }, []);
 
   const remove_product = async (id) => {
-    await fetch("http://localhost:4000/removeproduct", {
+    await fetch("https://shopping-r6vv.onrender.com/removeproduct", {
       method: "POST",
       headers: {
         Accept: "applicatiion/json",
@@ -58,7 +58,9 @@ const ListProduct = () => {
                 <p>${product.new_price}</p>
                 <p>{product.category}</p>
                 <img
-                  onClick={()=>{remove_product(product.id)}}
+                  onClick={() => {
+                    remove_product(product.id);
+                  }}
                   className="listproduct-remove-icon"
                   src={cross_icon}
                   alt=""
