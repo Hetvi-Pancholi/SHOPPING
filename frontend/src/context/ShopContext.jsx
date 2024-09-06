@@ -84,22 +84,19 @@ const ShopContextProvider = (props) => {
     }
     return totalItems;
   };
-  // const getTotalCartAmount = () => {
 
-  //   let total = 0;
-  //   for (const item in cartItems) {
-  //     let cartInfo = all_product.find((item) => item._id === item);
-  //     totalAmount += cartInfo.new_price * cartItems[item];
-  //   }
-  //   return totalAmount;
-
-  // };
-  const getTotalCartAmount = (cartItems) => {
+  const getTotalCartAmount = () => {
     let total = 0;
+
     for (const item in cartItems) {
       let itemInfo = all_product.find((product) => product.id === Number(item));
-      total += itemInfo.new_price * cartItems[item];
+
+      // Check if itemInfo is found before accessing its properties
+      if (itemInfo) {
+        total += itemInfo.new_price * cartItems[item];
+      }
     }
+
     return total;
   };
 
