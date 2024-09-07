@@ -59,4 +59,7 @@
     height: 60px;
 
   }
+  .listproduct-format{
+    gap: 3px;
+  }
 }
